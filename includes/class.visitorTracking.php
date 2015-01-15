@@ -18,6 +18,16 @@ class visitorTracking {
 	}
 	
 	/**
+	 * CLASS DESTRUCTOR 
+	 */
+	public function __destruct(){
+    		//Disconnect the database
+        	if( $this->link){
+            		$this->disconnect();
+        	}
+	}
+	
+	/**
 	 * Connect to the database
 	 */
 	private function db_connect() {
@@ -34,18 +44,6 @@ class visitorTracking {
 		}
 		
 	}
-	
-	/**
-	 * CLASS DESTRUCTOR 
-	 */
-	public function __destruct()
-    {
-    	//Disconnect the database
-        if( $this->link)
-        {
-            $this->disconnect();
-        }
-    }
 	
 	/**
 	 * Track visit, insert in database
