@@ -18,9 +18,9 @@ INSTALLATION
 
 1) Upload the files to your server. 
 
-2) Edit the database configuration ( /includes/db.php ) 
+2) Edit the database configuration ( `/includes/db.php` ) 
 
-3) Create the `visitors` table in your database. (.sql file included )
+3) Create the `visitors` table in your database. (`/includes/visitors.sql` )
 
 4) Instance the class in your code.
 
@@ -31,13 +31,13 @@ EXAMPLE INITIALIZATION:
 ----------------------------------------------
 
 //define database
-define( 'DB_HOST', 'localhost' );			// set database host
-define( 'DB_USER', 'root' ); 				// set database user
-define( 'DB_PASS', 'root' ); 				// set database password
-define( 'DB_NAME', 'yourdatabasename' );	// set database name
+`define( 'DB_HOST', 'localhost' );`			// set database host
+`define( 'DB_USER', 'root' );` 				// set database user
+`define( 'DB_PASS', 'root' );` 				// set database password
+`define( 'DB_NAME', 'yourdatabasename' );`	// set database name
 
 //include the class
-include( 'class.visitorTracking.php' );
+`include( 'class.visitorTracking.php' );`
 
 //instance the class
-$visitors = new visitorTracking();
+`$visitors = new visitorTracking();`
