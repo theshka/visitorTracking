@@ -7,7 +7,7 @@ class visitorTracking {
 	/**
 	 * CLASS CONSTRUCTOR 
 	 */
-	function __construct() {
+	public function __construct() {
 		
 		//Initialize the database 
 		$this->db_connect();
@@ -20,14 +20,16 @@ class visitorTracking {
 	/**
 	 * CLASS DESTRUCTOR 
 	 */
-	public function __destruct()
-    {
-    	//Disconnect the database
-        if( $this->link)
-        {
-            $this->link->close();
-        }
-    }
+	public function __destruct(){
+	
+		//Disconnect the database
+		if( $this->link){
+		
+			$this->link->close();
+			
+		}
+	
+	}
     
 	/**
 	 * Connect to the database
@@ -59,6 +61,7 @@ class visitorTracking {
 		$visitor_state 		= $ip_location['state'];
 		$visitor_country 	= $ip_location['country'];
 		$visitor_browser 	= $this->getBrowserType();
+		$visitor_OS			= $this->getOS();
 		$visitor_date 		= $this->getDate("Y-m-d h:i:sA");
 		$visitor_day 		= $this->getDate("d");
 		$visitor_month 		= $this->getDate("m");
@@ -76,6 +79,7 @@ class visitorTracking {
 			'visitor_state' => $visitor_state,
 			'visitor_country' => $visitor_country,
 			'visitor_browser' => $visitor_browser,
+			'visitor_OS' => $visitor_OS,
 			'visitor_date' => $visitor_date,
 			'visitor_day' => $visitor_day,
 			'visitor_month' => $visitor_month,
@@ -238,6 +242,52 @@ class visitorTracking {
 	}
 	
 	/**
+	 * Get the visitor operating system
+	 */
+	private function getOS() { 
+
+		$user_agent		=	$_SERVER['HTTP_USER_AGENT'];
+	
+		$os_platform    =   "Unknown OS Platform";
+	
+		$os_array       =   array(
+								'/windows nt 6.3/i'     =>  'Windows 8.1',
+								'/windows nt 6.2/i'     =>  'Windows 8',
+								'/windows nt 6.1/i'     =>  'Windows 7',
+								'/windows nt 6.0/i'     =>  'Windows Vista',
+								'/windows nt 5.2/i'     =>  'Windows Server 2003/XP x64',
+								'/windows nt 5.1/i'     =>  'Windows XP',
+								'/windows xp/i'         =>  'Windows XP',
+								'/windows nt 5.0/i'     =>  'Windows 2000',
+								'/windows me/i'         =>  'Windows ME',
+								'/win98/i'              =>  'Windows 98',
+								'/win95/i'              =>  'Windows 95',
+								'/win16/i'              =>  'Windows 3.11',
+								'/macintosh|mac os x/i' =>  'Mac OS X',
+								'/mac_powerpc/i'        =>  'Mac OS 9',
+								'/linux/i'              =>  'Linux',
+								'/ubuntu/i'             =>  'Ubuntu',
+								'/iphone/i'             =>  'iPhone',
+								'/ipod/i'               =>  'iPod',
+								'/ipad/i'               =>  'iPad',
+								'/android/i'            =>  'Android',
+								'/blackberry/i'         =>  'BlackBerry',
+								'/webos/i'              =>  'Mobile'
+							);
+	
+		foreach ($os_array as $regex => $value) { 
+	
+			if (preg_match($regex, $user_agent)) {
+				$os_platform    =   $value;
+			}
+	
+		}   
+	
+		return $os_platform;
+	
+	}
+	
+	/**
 	 * Get the date bits, used for search/filtering
 	 */
 	private function getDate($i) {
@@ -338,10 +388,11 @@ class visitorTracking {
 		}
 
 		echo '
-		<table id="visitors" class="table">
+		<table id="mytable" class="table table-bordred table-striped">
 		<thead>				
 			<th>IP Address</th>
 			<th>Browser</th>
+			<th>OS</th>
 			<th>City</th>
 			<th>State</th>
 			<th>Country</th>
@@ -368,12 +419,13 @@ class visitorTracking {
 				<tr>
 					<td width="10%">' . $r['visitor_ip'] . '</td>
 					<td width="10%">' . $r['visitor_browser'] . '</td>
+					<td width="10%">' . $r['visitor_OS'] . '</td>
 					<td width="10%">' . $r['visitor_city'] . '</td>
 					<td width="10%">' . $r['visitor_state'] . '</td>
 					<td width="10%">' . $r['visitor_country'] . '</td>
 					<td width="10%">' . $r['visitor_date'] . '</td>
-					<td width="10%">' . $r['visitor_referer'] . '</td>
-					<td width="10%">' . $r['visitor_page'] . '</td>
+					<td width="15%">' . $r['visitor_referer'] . '</td>
+					<td width="15%">' . $r['visitor_page'] . '</td>
 				</tr>
 				';	
 			}  
