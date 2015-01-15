@@ -15,7 +15,7 @@ class visitorTracking
 		
 		//Initialize the database 
 		$this->db_connect();
-	
+		
 		//Track the visit
 		$this->track();
 		
@@ -108,7 +108,7 @@ class visitorTracking
         	{
             		return false;
         	}
-        
+        	
         	//Insert the data
         	$sql = "INSERT INTO `visitors`";
         	$fields = array();
@@ -121,16 +121,16 @@ class visitorTracking
         	}
         	$fields = ' (' . implode(', ', $fields) . ')';
         	$values = '('. implode(', ', $values) .')';
-        
+        	
         	$sql .= $fields .' VALUES '. $values;
-
+        	
         	$query = $this->link->query( $sql );
-        
+        	
         	if( $this->link->error )
         	{
-        	   //return false; 
-        	   die ( 'ERROR! Please check your database settings.' );
-        	   return false;
+       			//return false; 
+       			die ( 'ERROR! Please check your database settings.' );
+       			return false;
         	}
         	else
         	{
@@ -139,9 +139,9 @@ class visitorTracking
         	
         		//return true
         		return true;
-            
+        		
         	}
-		
+        
 	}
 	
 	/**
@@ -223,50 +223,50 @@ class visitorTracking
 		
 		if (!empty($_SERVER['HTTP_USER_AGENT'])) 
 		{ 
-		   $HTTP_USER_AGENT = $_SERVER['HTTP_USER_AGENT']; 
+			$HTTP_USER_AGENT = $_SERVER['HTTP_USER_AGENT']; 
 		}
 		else if (!empty($HTTP_SERVER_VARS['HTTP_USER_AGENT'])) 
 		{ 
-		   $HTTP_USER_AGENT = $HTTP_SERVER_VARS['HTTP_USER_AGENT']; 
+			$HTTP_USER_AGENT = $HTTP_SERVER_VARS['HTTP_USER_AGENT']; 
 		} 
 		else if (!isset($HTTP_USER_AGENT)) 
 		{ 
-		   $HTTP_USER_AGENT = ''; 
+			$HTTP_USER_AGENT = ''; 
 		} 
 		if (ereg('Opera(/| )([0-9].[0-9]{1,2})', $HTTP_USER_AGENT, $log_version)) 
 		{ 
-		   $browser_version = $log_version[2]; 
-		   $browser_agent = 'opera'; 
+			$browser_version = $log_version[2]; 
+			$browser_agent = 'opera'; 
 		} 
 		else if (ereg('MSIE ([0-9].[0-9]{1,2})', $HTTP_USER_AGENT, $log_version)) 
 		{ 
-		   $browser_version = $log_version[1]; 
-		   $browser_agent = 'ie'; 
+			$browser_version = $log_version[1]; 
+			$browser_agent = 'ie'; 
 		} 
 		else if (ereg('OmniWeb/([0-9].[0-9]{1,2})', $HTTP_USER_AGENT, $log_version)) 
 		{ 
-		   $browser_version = $log_version[1]; 
-		   $browser_agent = 'omniweb'; 
+			$browser_version = $log_version[1]; 
+			$browser_agent = 'omniweb'; 
 		} 
 		else if (ereg('Netscape([0-9]{1})', $HTTP_USER_AGENT, $log_version)) 
 		{ 
-		   $browser_version = $log_version[1]; 
-		   $browser_agent = 'netscape';
+			$browser_version = $log_version[1]; 
+			$browser_agent = 'netscape';
 		} 
 		else if (ereg('Mozilla/([0-9].[0-9]{1,2})', $HTTP_USER_AGENT, $log_version)) 
 		{ 
-		   $browser_version = $log_version[1]; 
-		   $browser_agent = 'WebKit'; 
+			$browser_version = $log_version[1]; 
+			$browser_agent = 'WebKit'; 
 		} 
 		else if (ereg('Konqueror/([0-9].[0-9]{1,2})', $HTTP_USER_AGENT, $log_version)) 
 		{ 
-		   $browser_version = $log_version[1]; 
-		   $browser_agent = 'konqueror'; 
+			$browser_version = $log_version[1]; 
+			$browser_agent = 'konqueror'; 
 		} 
 		else 
 		{ 
-		   $browser_version = 0; 
-		   $browser_agent = 'other'; 
+			$browser_version = 0; 
+			$browser_agent = 'other'; 
 		}
 		
 		return $browser_agent;
@@ -353,8 +353,6 @@ class visitorTracking
 	 * Get the requested page
 	 */
 	private function getRequestURI() { 
-		
-		$uri = false;
 		
 		if ( ! empty( $_SERVER['REQUEST_URI'] ) )
 		{
