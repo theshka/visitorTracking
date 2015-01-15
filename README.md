@@ -22,7 +22,7 @@ CONCERNING THE MERCHANTABILITY OF THIS SOFTWARE OR ITS FITNESS FOR ANY PARTICULA
 
 1. Edit the database configuration ( `/includes/db.php` ) 
 
-1. Create the `visitors` table in your database. (`/includes/visitors.sql` )
+1. Create the `visitors` table in your database. (`/_installation/visitors.sql` )
 
 1. Instance the class in your code.
 
