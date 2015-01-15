@@ -1,6 +1,12 @@
 # visitorTracking
 A simple PHP class to gather visitor information, and store it in a database using MYSQLi
 
+## What makes this script special? 
+- It's more modern and complete than others I have seen around on Google/HotScripts. (SQLi, oop(ish?), etc...)
+- Self-contained class, No API keys to get, no files to include,  no need for a bunch of pages.
+- No bells or whistles, fully customiziable.
+
+
 ## LICENSE
 This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
 http://creativecommons.org/licenses/by-sa/4.0/
