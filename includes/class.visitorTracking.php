@@ -60,6 +60,7 @@ class visitorTracking {
 		$visitor_city 		= $ip_location['town'];
 		$visitor_state 		= $ip_location['state'];
 		$visitor_country 	= $ip_location['country'];
+		$visitor_flag		= $this->getFlag($this->getIP());
 		$visitor_browser 	= $this->getBrowserType();
 		$visitor_OS			= $this->getOS();
 		$visitor_date 		= $this->getDate("Y-m-d h:i:sA");
@@ -78,6 +79,7 @@ class visitorTracking {
 			'visitor_city' => $visitor_city,
 			'visitor_state' => $visitor_state,
 			'visitor_country' => $visitor_country,
+			'visitor_flag' => $visitor_flag,
 			'visitor_browser' => $visitor_browser,
 			'visitor_OS' => $visitor_OS,
 			'visitor_date' => $visitor_date,
@@ -184,6 +186,16 @@ class visitorTracking {
 		   }
 	
 		   return $ipInfo;
+	}
+	
+	/**
+	 * Get country flag 
+	 */
+	private function getFlag($ip) {
+
+		$flag = '<img src="http://api.hostip.info/flag.php?ip=' . $ip . '" heigh="30px" width="30px"/>';
+		
+		return $flag;
 	}
 	
 	/**
@@ -388,7 +400,7 @@ class visitorTracking {
 		}
 
 		echo '
-		<table id="mytable" class="table table-bordred table-striped">
+		<table id="visitor" class="table">
 		<thead>				
 			<th>IP Address</th>
 			<th>Browser</th>
@@ -403,7 +415,7 @@ class visitorTracking {
 		<tbody>
 		';
 		
-		$results = $this->link->query( "SELECT * FROM `visitors` ORDER BY `visitor_date` DESC LIMIT $offset, $rowsperpage" );
+		$results = $this->link->query( "SELECT * FROM `visitors` ORDER BY `id` DESC LIMIT $offset, $rowsperpage" );
 
 		if( $this->link->error )
 		{
@@ -422,7 +434,7 @@ class visitorTracking {
 					<td width="10%">' . $r['visitor_OS'] . '</td>
 					<td width="10%">' . $r['visitor_city'] . '</td>
 					<td width="10%">' . $r['visitor_state'] . '</td>
-					<td width="10%">' . $r['visitor_country'] . '</td>
+					<td width="10%">' . $r['visitor_flag'] . ' ' . $r['visitor_country'] . '</td>
 					<td width="10%">' . $r['visitor_date'] . '</td>
 					<td width="15%">' . $r['visitor_referer'] . '</td>
 					<td width="15%">' . $r['visitor_page'] . '</td>
