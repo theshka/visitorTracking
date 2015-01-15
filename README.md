@@ -45,4 +45,4 @@ $visitors = new visitorTracking();
 ```
 
 ## Contribute 
-Please star, fork, make pull rewuests, submit issues, you know -- Git things :) 
+Please star, fork, make pull requests, submit issues, you know -- Git things :) 
