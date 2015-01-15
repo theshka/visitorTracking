@@ -6,7 +6,7 @@ LICENSE
 CC0 - Released to the Public Domain
 
 To the extent possible under law, the author and contributers have waived all copyright and 
-related or neighboring rights to this work. This work is published from: Canada.
+related or neighboring rights to this work.
 
 THIS SOFTWARE IS BEING PROVIDED "AS IS", WITHOUT ANY EXPRESS OR IMPLIED WARRANTY.  
 IN PARTICULAR, THE AUTHOR DOES NOT MAKE ANY REPRESENTATION OR WARRANTY OF ANY KIND 
