@@ -2,7 +2,7 @@
 A simple PHP class to gather visitor information, and store it in a database using MYSQLi
 
 INSTALLATION
-------------------------------------------
+-----------------------
 
 1) Upload the files to your server. 
 
@@ -16,7 +16,7 @@ Demo: http://tyrexi.us/demo/visitorTracking
 
 
 EXAMPLE INITIALIZATION:
-------------------------------------------
+-----------------------
 
 //define database
 define( 'DB_HOST', 'localhost' );			// set database host
