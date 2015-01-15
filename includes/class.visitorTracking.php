@@ -20,13 +20,15 @@ class visitorTracking {
 	/**
 	 * CLASS DESTRUCTOR 
 	 */
-	public function __destruct(){
-    		//Disconnect the database
-        	if( $this->link){
-            		$this->disconnect();
-        	}
-	}
-	
+	public function __destruct()
+    {
+    	//Disconnect the database
+        if( $this->link)
+        {
+            $this->link->close();
+        }
+    }
+    
 	/**
 	 * Connect to the database
 	 */
