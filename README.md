@@ -43,6 +43,12 @@ include( 'class.visitorTracking.php' );
 //instance the class
 $visitors = new visitorTracking();
 ```
+The constructor class automatically calls the tracking function `$visitors->track();` which inserts the collected data.
+
+You print the array containting the current visit by echoing `$visitors->displayThisVisit();`
+
+You can output a table containing all the pagniated data from the database by echoing `$visitors->displayVisitors();`
+
 
 ## Contribute 
 Please star, fork, make pull requests, submit issues, you know -- Git things :) 
