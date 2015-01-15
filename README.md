@@ -36,8 +36,8 @@ Demo: http://tyrexi.us/demo/visitorTracking
 `define( 'DB_NAME', 'yourdatabasename' );`	// set database name
 
 //include the class
-`include( 'class.visitorTracking.php' );`
+include( 'class.visitorTracking.php' );
 
 //instance the class
-`$visitors = new visitorTracking();`
+$visitors = new visitorTracking();
 ```
