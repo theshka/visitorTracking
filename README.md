@@ -1,7 +1,8 @@
 # visitorTracking
-A simple PHP class to gather visitor information, and store it in a database using MYSQLi
+## A simple PHP class to gather visitor information, and store it in a database using MYSQLi
 
-## What makes this script special? 
+
+### What makes this script special? 
 - It's more modern and complete than others I have seen around on Google/HotScripts. (SQLi, oop(ish?), etc...)
 - Self-contained class, No API keys to get, no files to include,  no need for a bunch of pages.
 - No bells or whistles, fully customiziable.
@@ -17,8 +18,6 @@ CONCERNING THE MERCHANTABILITY OF THIS SOFTWARE OR ITS FITNESS FOR ANY PARTICULA
 
 
 ## INSTALLATION
-
-
 1. Upload the files to your server. 
 
 1. Edit the database configuration ( `/includes/db.php` ) 
@@ -31,7 +30,6 @@ Demo: http://tyrexi.us/demo/visitorTracking
 
 
 ## EXAMPLE INITIALIZATION:
-
 ```php
 //define database
 `define( 'DB_HOST', 'localhost' );`			// set database host
@@ -45,3 +43,6 @@ include( 'class.visitorTracking.php' );
 //instance the class
 $visitors = new visitorTracking();
 ```
+
+## Contribute 
+Please star, fork, make pull rewuests, submit issues, you know -- Git things :) 
