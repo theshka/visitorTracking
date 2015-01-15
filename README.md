@@ -1,8 +1,20 @@
 # visitorTracking
 A simple PHP class to gather visitor information, and store it in a database using MYSQLi
 
+LICENSE
+----------------------------------------------
+CC0 - Released to the Public Domain
+
+To the extent possible under law, the author and contributers have waived all copyright and 
+related or neighboring rights to this work. This work is published from: Canada.
+
+THIS SOFTWARE IS BEING PROVIDED "AS IS", WITHOUT ANY EXPRESS OR IMPLIED WARRANTY.  
+IN PARTICULAR, THE AUTHOR DOES NOT MAKE ANY REPRESENTATION OR WARRANTY OF ANY KIND 
+CONCERNING THE MERCHANTABILITY OF THIS SOFTWARE OR ITS FITNESS FOR ANY PARTICULAR PURPOSE.
+
+
 INSTALLATION
------------------------
+----------------------------------------------
 
 1) Upload the files to your server. 
 
@@ -16,7 +28,7 @@ Demo: http://tyrexi.us/demo/visitorTracking
 
 
 EXAMPLE INITIALIZATION:
------------------------
+----------------------------------------------
 
 //define database
 define( 'DB_HOST', 'localhost' );			// set database host
