@@ -338,7 +338,7 @@ class visitorTracking {
 		}
 
 		echo '
-		<table id="mytable" class="table table-bordred table-striped">
+		<table id="visitors" class="table">
 		<thead>				
 			<th>IP Address</th>
 			<th>Browser</th>
