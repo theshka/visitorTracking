@@ -286,15 +286,44 @@ class visitorTracking {
 	 */
 	public function displayVisitors() {           
 		
-		if ( !isset($_GET['start']) ) {
-			$start = 0;
+		/**
+		 * Retrieving a single row of data
+		 */
+		$query = $this->link->query("SELECT COUNT(*) AS count FROM visitors");
+		if( $query->num_rows > 0 )
+		{
+			list( $numrows ) = $query->fetch_row();
+			
+			// number of rows to show per page
+			$rowsperpage = 10;
+			
+			// find out total pages
+			$totalpages = ceil($numrows / $rowsperpage);
+			
+			// get the current page or set a default
+			if (isset($_GET['paginate']) && is_numeric($_GET['paginate'])) {
+			   // cast var as int
+			   $paginate = (int) $_GET['paginate'];
+			} else {
+			   // default page num
+			   $paginate = 1;
+			} // end if
+			
+			// if current page is greater than total pages...
+			if ($paginate > $totalpages) {
+			   // set current page to last page
+			   $paginate = $totalpages;
+			} // end if
+			// if current page is less than first page...
+			if ($paginate < 1) {
+			   // set current page to first page
+			   $paginate = 1;
+			} // end if
+			
+			// the offset of the list, based on current page 
+			$offset = ($paginate - 1) * $rowsperpage;
+			
 		}
-		else {
-			$start = $_GET['start'];
-		}
-		
-		$limit = 10;
-		
 
 		echo '
 		<table id="mytable" class="table table-bordred table-striped">
@@ -311,9 +340,7 @@ class visitorTracking {
 		<tbody>
 		';
 		
-		$total = $this->link->query( "SELECT COUNT(*) FROM `visitors`" );
-		
-		$results = $this->link->query( "SELECT * FROM `visitors` ORDER BY `visitor_date` DESC LIMIT {$start}, {$limit}" );
+		$results = $this->link->query( "SELECT * FROM `visitors` ORDER BY `visitor_date` DESC LIMIT $offset, $rowsperpage" );
 
 		if( $this->link->error )
 		{
@@ -344,62 +371,50 @@ class visitorTracking {
 		
 			</tbody>
 		</table>
+		<br>
 		';
+				
+		/******  build the pagination links ******/
+		// range of num links to show
+		$range = 3;
 		
-		echo($total->num_rows);
-		$this->paginate($start,$limit,$total->num_rows,'index.php', FALSE);
+		// if not on page 1, don't show back links
+		if ($paginate > 1) {
+		   // show << link to go back to page 1
+		   echo "<a href='{$_SERVER['PHP_SELF']}?paginate=1'> First </a>";
+		   // get previous page num
+		   $prevpage = $paginate - 1;
+		   // show < link to go back to 1 page
+		   echo "<a href='{$_SERVER['PHP_SELF']}?paginate=$prevpage'> < </a>";
+		} // end if 
+		
+		// loop to show links to range of pages around current page
+		for ($x = ($paginate - $range); $x < (($paginate + $range) + 1); $x++) {
+		   // if it's a valid page number...
+		   if (($x > 0) && ($x <= $totalpages)) {
+			  // if we're on current page...
+			  if ($x == $paginate) {
+				 // 'highlight' it but don't make a link
+				 echo "<a>$x</a>";
+			  // if not current page...
+			  } else {
+				 // make it a link
+				 echo "<a href='{$_SERVER['PHP_SELF']}?&paginate=$x'>$x</a>";
+			  } // end else
+		   } // end if 
+		} // end for
+						 
+		// if not on last page, show forward and last page links        
+		if ($paginate != $totalpages) {
+		   // get next page
+		   $nextpage = $paginate + 1;
+			// echo forward link for next page 
+		   echo "<a href='{$_SERVER['PHP_SELF']}?paginate=$nextpage'> > </a>";
+		   // echo forward link for lastpage
+		   echo "<a href='{$_SERVER['PHP_SELF']}?paginate=$totalpages'> Last </a>";
+		} // end if
+		/****** end build pagination links ******/
 		
 	}
-	
-	/**
-	 * Paginate the visitor table 
-	 */
-	public function paginate($start,$limit,$total,$filePath,$otherParams) {
-		global $lang;
-	
-		$allPages = ceil($total/$limit);
-	
-		$currentPage = floor($start/$limit) + 1;
-	
-		global $pagination;
-		if ($allPages>10) {
-			$maxPages = ($allPages>9) ? 9 : $allPages;
-	
-			if ($allPages>9) {
-				if ($currentPage>=1&&$currentPage<=$allPages) {
-					
-	
-					$minPages = ($currentPage>4) ? $currentPage : 5;
-					$maxPages = ($currentPage<$allPages-4) ? $currentPage : $allPages - 4;
-	
-					for($i=$minPages-4; $i<$maxPages+5; $i++) {
-						$pagination .= ($i == $currentPage) ? "<li><a href=\"#\" 
-						class=\"active\">".$i."</a></li> " : "<li><a href=\"".$filePath."&
-						start=".(($i-1)*$limit).$otherParams."\">".$i."</a></li> ";
-					}
-					
-				}
-			}
-		} else {
-			for($i=1; $i<$allPages+1; $i++) {
-			$pagination .= ($i==$currentPage) ? "<li><a href=\"#\" class=\"active\">".$i."</a></li> "
-			: "<li><a href=\"".$filePath."&start=".(($i-1)*$limit).$otherParams."\">".$i."</a><li> ";
-			}
-		}
-	
-		if ($currentPage>1) $pagination = "<li><a href=\"".$filePath."&
-		start=0".$otherParams."\">FIRST</a></li> <li><a href=\"".$filePath."&
-		start=".(($currentPage-2)*$limit).$otherParams."\">&lt;</a></li> ".$pagination;
-		if ($currentPage<$allPages) $pagination .= "<li><a href=\"".$filePath."&
-		start=".($currentPage*$limit).$otherParams."\">&gt;</a></li> <li><a href=\"".$filePath."&
-		start=".(($allPages-1)*$limit).$otherParams."\">LAST</a><li>";
-		
-		echo 
-		'
-		<div class="col-md-12 text-center">
-			<div class="pagination pagination-sm">' . $pagination . '</div>
-		</div>
-		';
-	} 
 	
 }
