@@ -12,7 +12,7 @@ INSTALLATION
 
 4) Instance the class in your code.
 
-Enjoy!
+Demo: http://tyrexi.us/demo/visitorTracking
 
 
 EXAMPLE INITIALIZATION:
