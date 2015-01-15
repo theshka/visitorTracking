@@ -36,6 +36,18 @@ class visitorTracking {
 	}
 	
 	/**
+	 * CLASS DESTRUCTOR 
+	 */
+	public function __destruct()
+    {
+    	//Disconnect the database
+        if( $this->link)
+        {
+            $this->disconnect();
+        }
+    }
+	
+	/**
 	 * Track visit, insert in database
 	 */
 	private function track(){
