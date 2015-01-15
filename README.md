@@ -28,7 +28,7 @@ Demo: http://tyrexi.us/demo/visitorTracking
 
 ## EXAMPLE INITIALIZATION:
 
-...php
+```php
 //define database
 `define( 'DB_HOST', 'localhost' );`			// set database host
 `define( 'DB_USER', 'root' );` 				// set database user
@@ -40,4 +40,4 @@ Demo: http://tyrexi.us/demo/visitorTracking
 
 //instance the class
 `$visitors = new visitorTracking();`
-...
+```
