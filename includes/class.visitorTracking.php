@@ -134,6 +134,8 @@ class visitorTracking
         	}
         	else
         	{
+        		//thisVisit has been tracked.
+        		
         		//set thisVisit variable equal to visitor array
         		$this->thisVisit = $visitor;
         	
@@ -149,14 +151,17 @@ class visitorTracking
 	 */	
 	private function getIP() 
 	{
-		
+		//check for IP address	
 		if ( ! empty( $_SERVER['REMOTE_ADDR'] ) )
 		{
+			//IP found!!
 			$ip = $_SERVER['REMOTE_ADDR'];
 			
+			//return IP address
 			return $ip;
 	 	}
 	 	
+	 	//not found, return false
 	 	return false;
 	 	
 	}
@@ -196,10 +201,10 @@ class visitorTracking
 		foreach ($patterns as $key => $pattern)
 		{
 			//store the result in array
-		$ipInfo[$key] = preg_match($pattern,$response,$value) && !empty($value[1]) ? $value[1] : 'not found';
+			$ipInfo[$key] = preg_match($pattern,$response,$value) && !empty($value[1]) ? $value[1] : 'not found';
 		}
-		   
-		   return $ipInfo;
+		
+		return $ipInfo;
 		   
 	}
 	
@@ -209,7 +214,14 @@ class visitorTracking
 	private function getFlag($ip) 
 	{
 		
-		$flag = '<img src="http://api.hostip.info/flag.php?ip=' . $ip . '" heigh="30px" width="30px"/>';
+		//check, if the provided ip is valid
+		if(!filter_var($ip, FILTER_VALIDATE_IP) || $ip == 'localhost')
+		{
+			//throw new InvalidArgumentException("IP is not valid");
+			return false;
+		}
+		
+		$flag = '<img src="http://api.hostip.info/flag.php?ip=' . $ip . '" height="30px" width="30px"/>';
 		
 		return $flag;
 		
@@ -278,9 +290,13 @@ class visitorTracking
 	 */
 	private function getOS() 
 	{ 
-		
+		//Grab the user-agent string
 		$user_agent	=	$_SERVER['HTTP_USER_AGENT'];
+		
+		//Set os_platform to unknown.
 		$os_platform	=	"Unknown OS Platform";
+		
+		//array of regex patterns
 		$os_array	=	array(
 						'/windows nt 6.3/i'     =>  'Windows 8.1',
 						'/windows nt 6.2/i'     =>  'Windows 8',
@@ -306,14 +322,17 @@ class visitorTracking
 						'/webos/i'              =>  'Mobile'
 					);
 		
+		//use the patterns to search for OS version
 		foreach ($os_array as $regex => $value) 
 		{ 
 			if (preg_match($regex, $user_agent)) 
 			{
+				//OS was found!
 				$os_platform    =   $value;
 			}
 		}   
 		
+		//return OS or unknown
 		return $os_platform;
 		
 	}
@@ -323,6 +342,7 @@ class visitorTracking
 	 */
 	private function getDate($i) 
 	{
+		//TO-DO: Check for/set Timezone??
 		
 		//get the requested date
 		$date = date($i);
@@ -337,14 +357,17 @@ class visitorTracking
 	 */
 	private function getReferer() 
 	{
-		
+		//Check for referer
 		if ( ! empty( $_SERVER['HTTP_REFERER'] ) )
 		{
+			//referer found!
 			$ref = $_SERVER['HTTP_REFERER'];
 			
+			//return referer
 			return $ref;
 		}
 		
+		//no referer, return false
 		return false;
 	 
 	}
@@ -354,13 +377,17 @@ class visitorTracking
 	 */
 	private function getRequestURI() { 
 		
+		//check for page request
 		if ( ! empty( $_SERVER['REQUEST_URI'] ) )
 		{
+			//page request found
 			$uri = $_SERVER['REQUEST_URI'];
 			
+			//reutn uniform resource identifier
 			return $uri;
 	 	}
 	 	
+	 	//no URI, return false
 	 	return false;
 		
 	}
@@ -370,7 +397,7 @@ class visitorTracking
 	 */	
 	public function displayThisVisit() 
 	{
-		
+		//print the array containing current visit
 		print_r($this->thisVisit);
 		
 	}
