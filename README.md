@@ -32,10 +32,10 @@ Demo: http://tyrexi.us/demo/visitorTracking
 ## EXAMPLE INITIALIZATION:
 ```php
 //define database
-`define( 'DB_HOST', 'localhost' );`			// set database host
-`define( 'DB_USER', 'root' );` 				// set database user
-`define( 'DB_PASS', 'root' );` 				// set database password
-`define( 'DB_NAME', 'yourdatabasename' );`	// set database name
+define( 'DB_HOST', 'localhost' );			    // set database host
+define( 'DB_USER', 'root' ); 				      // set database user
+define( 'DB_PASS', 'root' ); 				      // set database password
+define( 'DB_NAME', 'yourdatabasename' );	// set database name
 
 //include the class
 include( 'class.visitorTracking.php' );
@@ -43,7 +43,7 @@ include( 'class.visitorTracking.php' );
 //instance the class
 $visitors = new visitorTracking();
 ```
-The constructor class automatically calls the tracking function `$visitors->track();` which inserts the collected data.
+The constructor method automatically calls the tracking method `$visitors->track();` which inserts the collected data.
 
 You print the array containting the current visit by echoing `$visitors->displayThisVisit();`
 
