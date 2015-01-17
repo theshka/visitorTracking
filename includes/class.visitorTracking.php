@@ -72,7 +72,7 @@ class visitorTracking
 		$visitor_country	= $ip_location['country'];
 		$visitor_flag		= $this->getFlag($this->getIP());
 		$visitor_browser	= $this->getBrowserType();
-		$visitor_OS			= $this->getOS();
+		$visitor_OS		= $this->getOS();
 		$visitor_date		= $this->getDate("Y-m-d h:i:sA");
 		$visitor_day		= $this->getDate("d");
 		$visitor_month		= $this->getDate("m");
@@ -184,10 +184,10 @@ class visitorTracking
 		   
 		//Array containing all regex-patterns necessary to extract ip-geoinfo from page
 		$patterns=array();
-		$patterns["domain"] = '#Domain: (.*?)&nbsp;#i';
-		$patterns["country"] = '#Country: (.*?)&nbsp;#i';
-		$patterns["state"] = '#State/Region: (.*?)<br#i';
-		$patterns["town"] = '#City: (.*?)<br#i';
+		$patterns["domain"] 	= '#Domain: (.*?)&nbsp;#i';
+		$patterns["country"] 	= '#Country: (.*?)&nbsp;#i';
+		$patterns["state"] 	= '#State/Region: (.*?)<br#i';
+		$patterns["town"] 	= '#City: (.*?)<br#i';
 		   
  		//Array where results will be stored
 		$ipInfo=array();
@@ -209,7 +209,7 @@ class visitorTracking
 	private function getFlag($ip) 
 	{
 		
-		$flag = '<img src="http://api.hostip.info/flag.php?ip=' . $ip . '" heigh="30px" width="30px"/>';
+		$flag = '<img src="http://api.hostip.info/flag.php?ip=' . $ip . '" height="30px" width="30px"/>';
 		
 		return $flag;
 		
@@ -241,7 +241,7 @@ class visitorTracking
 		else if (ereg('MSIE ([0-9].[0-9]{1,2})', $HTTP_USER_AGENT, $log_version)) 
 		{ 
 			$browser_version = $log_version[1]; 
-			$browser_agent = 'ie'; 
+			$browser_agent = 'IE'; 
 		} 
 		else if (ereg('OmniWeb/([0-9].[0-9]{1,2})', $HTTP_USER_AGENT, $log_version)) 
 		{ 
@@ -384,7 +384,7 @@ class visitorTracking
 		/**
 		 * Retrieving a single row of data
 		 */
-		$query = $this->link->query("SELECT COUNT(*) AS count FROM visitors");
+		$query = $this->link->query("SELECT COUNT(*) AS `count` FROM `visitors`");
 		if( $query->num_rows > 0 )
 		{
 			list( $numrows ) = $query->fetch_row();
