@@ -69,8 +69,8 @@ class visitorTracking
 		$ip_location		= $this->geoCheckIP($this->getIP());
 		$visitor_city		= $ip_location['town'];
 		$visitor_state		= $ip_location['state'];
-		$visitor_country	= $ip_location['country'];
-		$visitor_flag		= $this->getFlag($this->getIP());
+		$visitor_country	= explode('-', $ip_location['country']);
+		$visitor_flag		= $this->getFlag($visitor_country[0]);
 		$visitor_browser	= $this->getBrowserType();
 		$visitor_OS			= $this->getOS();
 		$visitor_date		= $this->getDate("Y-m-d h:i:sA");
@@ -88,7 +88,7 @@ class visitorTracking
 			'visitor_ip' 		=> $visitor_ip,
 			'visitor_city' 		=> $visitor_city,
 			'visitor_state' 	=> $visitor_state,
-			'visitor_country' 	=> $visitor_country,
+			'visitor_country' 	=> $visitor_country[1],
 			'visitor_flag' 		=> $visitor_flag,
 			'visitor_browser' 	=> $visitor_browser,
 			'visitor_OS' 		=> $visitor_OS,
@@ -218,10 +218,10 @@ class visitorTracking
 	/**
 	 * Get country flag
 	 */
-	private function getFlag($ip)
+	private function getFlag($countryCode)
 	{
 
-		$flag = '<img src="http://api.hostip.info/flag.php?ip=' . $ip . '" height="15px" width="25px"/>';
+		$flag = '<img src="includes/famfamfam-countryflags/' . $countryCode . '.gif" height="15px" width="25px"/>';
 
 		return $flag;
 
