@@ -88,7 +88,7 @@ class visitorTracking
 			'visitor_ip' 		=> $visitor_ip,
 			'visitor_city' 		=> $visitor_city,
 			'visitor_state' 	=> $visitor_state,
-			'visitor_country' 	=> $visitor_country[1],
+			'visitor_country' 	=> trim($visitor_country[1]),
 			'visitor_flag' 		=> $visitor_flag,
 			'visitor_browser' 	=> $visitor_browser,
 			'visitor_OS' 		=> $visitor_OS,
@@ -453,7 +453,7 @@ class visitorTracking
 			<tbody>
 		';
 
-		$results = $this->link->query( "SELECT * FROM `visitors` ORDER BY `id` DESC LIMIT $offset, $rowsperpage" );
+		$results = $this->link->query( "SELECT * FROM `visitors` ORDER BY `visitor_date` DESC LIMIT $offset, $rowsperpage" );
 
 		if( $this->link->error )
 		{

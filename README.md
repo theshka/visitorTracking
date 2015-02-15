@@ -4,7 +4,6 @@
 
 ### What makes this script special?
 - It's more modern and complete than others I have seen around on Google/HotScripts. (SQLi, oop(ish?), etc...)
-- Self-contained class, No API keys to get, no files to include,  no need for a bunch of pages.
 - No bells or whistles, fully customiziable.
 
 
@@ -39,6 +38,8 @@ The constructor method automatically calls the tracking method `$visitors->track
 You print the array containting the current visit by echoing `$visitors->displayThisVisit();`
 
 You can output a table containing all the pagniated data from the database by echoing `$visitors->displayVisitors();`
+
+Alternatively, you can just grab the table data from your database `SELECT * FROM visitors ORDER BY date DESC` and format it according to your specifications.
 
 ## LICENSE
 This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
