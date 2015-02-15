@@ -17,7 +17,7 @@
 
 1. Instance the class in your code.
 
-Demo: http://tyrexi.us/demo/visitorTracking (link broken)
+Working Demo: http://tyrexi.us/demo/visitorTracking
 
 
 ## EXAMPLE INITIALIZATION:
