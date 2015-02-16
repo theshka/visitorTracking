@@ -4,7 +4,7 @@
 
 CREATE TABLE IF NOT EXISTS `visitors` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `visitor_ip`      varchar(11)     NOT NULL,
+  `visitor_ip`      varchar(256)     NOT NULL,
   `visitor_city`    varchar(64)     NOT NULL,
   `visitor_state`   varchar(64)     NOT NULL,
   `visitor_country` varchar(64)     NOT NULL,
