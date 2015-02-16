@@ -70,7 +70,9 @@ class visitorTracking
 		$visitor_city		= $ip_location['town'];
 		$visitor_state		= $ip_location['state'];
 		$visitor_country	= explode('-', $ip_location['country']);
-		$visitor_flag		= $this->getFlag($visitor_country[0]);
+		$visitor_ccode		= trim($visitor_country[0]);
+		$visitor_cname		= trim($visitor_country[1]);
+		$visitor_flag		= $this->getFlag($visitor_ccode);
 		$visitor_browser	= $this->getBrowserType();
 		$visitor_OS		= $this->getOS();
 		$visitor_date		= $this->getDate("Y-m-d h:i:sA");
@@ -88,7 +90,7 @@ class visitorTracking
 			'visitor_ip' 		=> $visitor_ip,
 			'visitor_city' 		=> $visitor_city,
 			'visitor_state' 	=> $visitor_state,
-			'visitor_country' 	=> trim($visitor_country[1]),
+			'visitor_country' 	=> $visitor_cname,
 			'visitor_flag' 		=> $visitor_flag,
 			'visitor_browser' 	=> $visitor_browser,
 			'visitor_OS' 		=> $visitor_OS,
@@ -220,9 +222,8 @@ class visitorTracking
 	 */
 	private function getFlag($countryCode)
 	{
-		$countryCode = trim(strtolower($countryCode));
 
-		$flag = '<img src="includes/famfamfam-countryflags/' . $countryCode . '.gif" height="15px" width="25px"/>';
+		$flag = '<img src="includes/famfamfam-countryflags/' . strtolower($countryCode) . '.gif" height="15px" width="25px"/>';
 
 		return $flag;
 
