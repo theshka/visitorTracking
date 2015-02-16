@@ -3,12 +3,12 @@
 	 * include database settings
 	 */
 	require_once( 'includes/db.php' );
-	
+
 	/**
 	 * include the class
 	 */
 	require_once( 'includes/class.visitorTracking.php' );
-	
+
 	/**
 	 * instance the class
 	 */
@@ -19,13 +19,17 @@
 	<head>
 		<title>PHP + MySQLi - Visitor Tracking Class</title>
 	</head>
-	
+
 	<body>
+		<div style="float:right;"><a href="examples/example1.php">Example 1</a></div>
+
+		<br>
+
 		<h2>This visit has been tracked.</h2>
 		<pre><?php echo $visitors->displayThisVisit(); ?></pre>
-		
+
 		<br><hr><br>
-		
+
 		<h2>All tracked visits:</h2>
 		<pre><?php echo $visitors->displayVisitors(); ?></pre>
 	</body>

@@ -72,7 +72,7 @@ class visitorTracking
 		$visitor_country	= explode('-', $ip_location['country']);
 		$visitor_flag		= $this->getFlag($visitor_country[0]);
 		$visitor_browser	= $this->getBrowserType();
-		$visitor_OS			= $this->getOS();
+		$visitor_OS		= $this->getOS();
 		$visitor_date		= $this->getDate("Y-m-d h:i:sA");
 		$visitor_day		= $this->getDate("d");
 		$visitor_month		= $this->getDate("m");
@@ -221,7 +221,7 @@ class visitorTracking
 	private function getFlag($countryCode)
 	{
 		$countryCode = trim(strtolower($countryCode));
-		
+
 		$flag = '<img src="includes/famfamfam-countryflags/' . $countryCode . '.gif" height="15px" width="25px"/>';
 
 		return $flag;
@@ -338,7 +338,7 @@ class visitorTracking
 	{
 
 		//get the requested date
-		$date = date($i);
+		$date = gmdate($i);
 
 		//return the date
 		return $date;
@@ -375,6 +375,16 @@ class visitorTracking
 	 	}
 
 	 	return false;
+
+	}
+
+	/**
+	* Return the current visit array
+	*/
+	public function getThisVisit()
+	{
+
+		return($this->thisVisit);
 
 	}
 
@@ -468,15 +478,15 @@ class visitorTracking
 				echo
 				'
 				<tr>
-					<td width="10%">' . $r['visitor_ip'] . '</td>
+					<td width="20%">' . $r['visitor_ip'] . '</td>
 					<td width="10%">' . $r['visitor_browser'] . '</td>
 					<td width="10%">' . $r['visitor_OS'] . '</td>
 					<td width="10%">' . $r['visitor_city'] . '</td>
 					<td width="10%">' . $r['visitor_state'] . '</td>
 					<td width="10%">' . $r['visitor_flag'] . ' ' . $r['visitor_country'] . '</td>
 					<td width="10%">' . $r['visitor_date'] . '</td>
-					<td width="15%">' . $r['visitor_page'] . '</td>
-					<td width="15%">' . $r['visitor_referer'] . '</td>
+					<td width="10%">' . $r['visitor_page'] . '</td>
+					<td width="10%">' . $r['visitor_referer'] . '</td>
 				</tr>
 				';
 			}
