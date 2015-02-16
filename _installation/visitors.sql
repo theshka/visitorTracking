@@ -3,7 +3,7 @@
 --
 
 CREATE TABLE IF NOT EXISTS `visitors` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `visitor_ip` varchar(32) DEFAULT NULL,
   `visitor_city` varchar(64) NOT NULL,
   `visitor_state` varchar(64) NOT NULL,
@@ -19,5 +19,6 @@ CREATE TABLE IF NOT EXISTS `visitors` (
   `visitor_minute` varchar(2) NOT NULL DEFAULT '0',
   `visitor_seconds` varchar(2) NOT NULL,
   `visitor_referer` varchar(255) DEFAULT NULL,
-  `visitor_page` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+  `visitor_page` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;

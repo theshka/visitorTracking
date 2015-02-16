@@ -464,7 +464,7 @@ class visitorTracking
 			<tbody>
 		';
 
-		$results = $this->link->query( "SELECT * FROM `visitors` ORDER BY `visitor_date` DESC LIMIT $offset, $rowsperpage" );
+		$results = $this->link->query( "SELECT * FROM `visitors` ORDER BY `id` DESC LIMIT $offset, $rowsperpage" );
 
 		if( $this->link->error )
 		{

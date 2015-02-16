@@ -1,3 +1,5 @@
+<!-- Example 1, display the current visit on a map. -->
+
 <?php
     /**
      * include database settings
@@ -26,7 +28,7 @@
         <br>
 
         <h2>This visit has been tracked.</h2>
-        <pre><?php print_r($visitors->getThisVisit()); ?></pre>
+        <pre><?php $visitors->displayThisVisit(); ?></pre>
 
         <iframe width="100%" height="325" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
         src="https://maps.google.co.uk/maps?f=q&source=s_q&hl=en&geocode=&q=<?php echo urlencode($visitors->getThisVisit()['visitor_city'] . ' ' . $visitors->getThisVisit()['visitor_state'] . ' ' . $visitors->getThisVisit()['visitor_country']);?>&output=embed"></iframe>
@@ -59,7 +61,7 @@
 
                 <body>
                     <h2>This visit has been tracked.</h2>
-                    <pre><?php print_r($visitors->getThisVisit()); ?></pre>
+                    <pre>< ?php print_r($visitors->getThisVisit()); ? ></pre>
 
                     <iframe width="100%" height="325" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
                     src="https://maps.google.co.uk/maps?f=q&source=s_q&hl=en&geocode=&q=< ? php echo urlencode($visitors->getThisVisit()['visitor_city'] . ' ' . $visitors->getThisVisit()['visitor_state'] . ' ' . $visitors->getThisVisit()['visitor_country']); ? >&output=embed"></iframe>
