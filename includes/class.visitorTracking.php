@@ -1,10 +1,8 @@
 <?php
 /**
  * visitorTracking Class
- *
- * This is the configuration file for Pico. It comes loaded with the 
- * default values, which can be found in the get_config() method of
- * the Pico class (lib/pico.php).
+ * 
+ * This is a PHP class that grabs $_SERVER vars and stores them in a MySQLi database.
  *
  * @author Tyler Heshka
  * @link http://tyrexi.us/visitorTracking
