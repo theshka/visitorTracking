@@ -1,4 +1,17 @@
 <?php
+/**
+ * visitorTracking Class
+ *
+ * This is the configuration file for Pico. It comes loaded with the 
+ * default values, which can be found in the get_config() method of
+ * the Pico class (lib/pico.php).
+ *
+ * @author Tyler Heshka
+ * @link http://tyrexi.us/visitorTracking
+ * @license http://opensource.org/licenses/MIT
+ * @version 0.1
+ * 
+ */
 class visitorTracking
 {
 	//Stores "thisVisit" array
