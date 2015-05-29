@@ -5,7 +5,8 @@
  * This is a PHP class that grabs $_SERVER vars and stores them in a MySQLi database.
  *
  * @author Tyler Heshka
- * @link http://tyrexi.us/visitorTracking
+ * @link http://keybase.io/theshka
+ * @example http://tyrexi.us/visitorTracking
  * @license http://opensource.org/licenses/MIT
  * @version 0.1
  * 
@@ -252,7 +253,7 @@ class visitorTracking
 	/**
 	 * Get the visitor browser-type
 	 * 
-	 * @param null / $_SERVER['HTTP_USER_AGENT'] the server's current information
+	 * @param null $_SERVER['HTTP_USER_AGENT'] the server's current information
 	 * @return string $browser_agent the formatted browser-type string
 	 */
 	private function getBrowserType ()
@@ -313,7 +314,7 @@ class visitorTracking
 	/**
 	 * Get the visitor operating system
 	 * 
-	 * @param null / $_SERVER['HTTP_USER_AGENT'] the server's current information
+	 * @param null $_SERVER['HTTP_USER_AGENT'] the server's current information
 	 * @return string $os_platform the formatted os-type string
 	 */
 	private function getOS()
@@ -378,7 +379,7 @@ class visitorTracking
 	/**
 	 * Get the referring page, if any is sent
 	 * 
-	 * @param null / $_SERVER['HTTP_REFERER'] the server's current information
+	 * @param null $_SERVER['HTTP_REFERER'] the server's current information
 	 * @return string $ref the path to the refering page
 	 */
 	private function getReferer()
@@ -398,7 +399,7 @@ class visitorTracking
 	/**
 	 * Get the requested page
 	 * 
-	 * @param null / $_SERVER['REQUEST_URI'] the server's current information
+	 * @param null $_SERVER['REQUEST_URI'] the server's current information
 	 * @return string $uri the path to the requested page
 	 */
 	private function getRequestURI() {
@@ -444,7 +445,7 @@ class visitorTracking
 	 * Query database, paginate results, and display the visitors table
 	 * 
 	 * @param null
-	 * @return output $this->displayVisitors() the html output from the database
+	 * @return array $this->displayVisitors() the html output from the database
 	 */
 	public function displayVisitors()
 	{
