@@ -21,7 +21,7 @@
 	</head>
 
 	<body>
-		<div style="float:left;"><a href="http://tyrexi.us/visitorTrackingDocumentation/">Documentation</a></div>
+		<div style="float:left;"><a href="http://tyrexi.us/visitorTrackingDocumentation/" target="_blank">Documentation</a></div>
 		<div style="float:right;"><a href="examples/example1.php">Example 1</a></div>
 
 		<br>
