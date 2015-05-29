@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdoc>
+    <parser>
+        <target>data/output</target>
+    </parser>
+
+    <transformer>
+        <target>data/output</target>
+    </transformer>
+    <title><![CDATA[visitorTracking Documentation]]></title>
+    <files>
+        <file>includes/class.visitorTracking.php</file>
+        <file>includes/db.php</file>
+        <directory>_installation</directory>
+        <directory>includes/*</directory>
+        <ignore>examples/*</ignore>
+        <ignore>index.php</ignore>
+    </files>
+</phpdoc>

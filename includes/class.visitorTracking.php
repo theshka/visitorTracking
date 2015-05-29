@@ -1,55 +1,95 @@
 <?php
 /**
- * visitorTracking Class
- * 
- * This is a PHP class that grabs $_SERVER vars and stores them in a MySQLi database.
+ * A simple PHP class to gather visitor information, and store it in a database using MYSQLi
  *
- * @author Tyler Heshka
- * @link http://keybase.io/theshka
- * @example http://tyrexi.us/visitorTracking
- * @license http://opensource.org/licenses/MIT
- * @version 0.1
- * 
+ * visitorTracking
+ *
+ * LICENSE: THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
+ * FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+ * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ * @category   HTML,PHP5,Databases,Geography
+ * @author     Tyler Heshka <tyler@heshka.com>
+ * @see        http://keybase.io/theshka
+ * @license    http://opensource.org/licenses/MIT
+ * @version    1.20.00
+ * @link       http://tyrexi.us/visitorTracking
+ */
+
+/**
+ * The visitorTracking class
+ *
+ * This PHP class gathers detailed visitor information,
+ * and stores the visit in a database using MYSQLi.
  */
 class visitorTracking
 {
-	//Stores "thisVisit" array
+	/**
+	 * Stores "thisVisit" array
+	 */
 	var $thisVisit = null;
 
-	//MYSQLi connection
+	/**
+	 * MYSQLi connection
+	 */
 	private $link = null;
 
 	/**
-	 * CLASS CONSTRUCTOR
-	 */
-	public function __construct()
+     * The constructor method
+     *
+     * This method calls the db_connect method, which constructs
+	 * and initializes the conection to the database. Once established,
+	 * the track method is called. This method gathers the data to insert.
+	 *
+     * @access public
+     */
+	private function __construct()
 	{
 
-		//Initialize the database
+		//Call the db_connect method
 		$this->db_connect();
 
-		//Track the visit
+		//Call the track method
 		$this->track();
 
 	}
 
 	/**
-	 * CLASS DESTRUCTOR
-	 */
-	public function __destruct()
+     * The destructor method
+     *
+     * This method tests for a connection to the database,
+	 * if the connection is active, this method will close
+	 * the connection to the MYSQLi database.
+	 *
+     * @access public
+     */
+	private function __destruct()
 	{
 
-		//Disconnect the database
+		//Test for database connection
 		if( $this->link )
 		{
+			//Disconnect the database
 			$this->link->close();
 		}
 
 	}
 
 	/**
-	 * Connect to the database
-	 */
+     * Connect to the databse
+     *
+	 * This method sets the character encoding for the databse,
+	 * then trys to connect to the databse using MYSQLi. The
+	 * constants are defined in a seperate file and included at runtime.
+	 * If the method fails to connect with the database, the script dies,
+	 * and a unable to connect error is shown to the user.
+	 *
+     * @access private
+     */
 	private function db_connect()
 	{
 
@@ -71,10 +111,18 @@ class visitorTracking
 	}
 
 	/**
-	 * Track visit, insert in database
+	 * Tracking Method
+	 *
+	 * This is the main tracking method. It gathers all of the
+	 * other methods in the class in to an array, and then inserts
+	 * the array in to the database. If a connection to the database
+	 * cannot be established, an error is shown to the user.
+	 *
+	 * @access protected
 	 */
-	private function track()
+	protected function track()
 	{
+		//TODO: rewrite geoCheckIP function, consolidate variables with array.
 
 		//Prepare variables
 		$visitor_ip 		= $this->getIP(TRUE);
@@ -86,7 +134,7 @@ class visitorTracking
 		$visitor_cname		= trim($visitor_country[1]);
 		$visitor_flag		= $this->getFlag($visitor_ccode);
 		$visitor_browser	= $this->getBrowserType();
-		$visitor_OS		= $this->getOS();
+		$visitor_OS			= $this->getOS();
 		$visitor_date		= $this->getDate("Y-m-d h:i:sA");
 		$visitor_day		= $this->getDate("d");
 		$visitor_month		= $this->getDate("m");
@@ -160,7 +208,11 @@ class visitorTracking
 
 	/**
 	 * Get visitor IP address
-	 * 
+	 *
+	 * This method tests rigorously for the current users IP address
+	 * It tests the $_SERVER vars to find IP addresses even if they
+	 * are being proxied, forwarded, or otherwise obscured.
+	 *
 	 * @param boolean $getHostByAddr the IP address with hostname
 	 * @return string $ip the formatted IP address
 	 */
@@ -192,7 +244,12 @@ class visitorTracking
 
 	/**
 	 * Geo-locate visitor IP address
-	 * 
+	 *
+	 * This method accepts an IP address. It then tests the address
+	 * for validity, connects to the netip.de geo server, and user
+	 * a set of regex patterns to scrape the location results.
+	 * The method then returns an array of the geolocation information.
+	 *
 	 * @param string $ip the IPv4 address to lookup on netip.de
 	 * @return array geolocation data: country, state, town
 	 */
@@ -237,7 +294,12 @@ class visitorTracking
 
 	/**
 	 * Get country flag
-	 * 
+	 *
+	 * This method accepts a 2-charcter, lowercase, country code.
+	 * It then matches the code to the corresponding image file
+	 * in the includes/famfamfam-countryflags directory. Finally,
+	 * it returns a complete HTML IMG tag.
+	 *
 	 * @param string $countryCode the two character country code from geoCheckIP
 	 * @return string $flag the finished img tag containing country flag
 	 */
@@ -252,9 +314,14 @@ class visitorTracking
 
 	/**
 	 * Get the visitor browser-type
-	 * 
-	 * @param null $_SERVER['HTTP_USER_AGENT'] the server's current information
-	 * @return string $browser_agent the formatted browser-type string
+	 *
+	 * This method tests the $_SERVER vars for an HTTP_USER_AGENT entry.
+	 * Through a series of if statements, preg_match, and regex patterns,
+	 * a browser-type will be returned. If a browser-type is unable to be
+	 * determined 'other' will be used in it's place.
+	 *
+	 * @param null
+	 * @return string|null $browser_agent the formatted browser-type string
 	 */
 	private function getBrowserType ()
 	{
@@ -313,8 +380,13 @@ class visitorTracking
 
 	/**
 	 * Get the visitor operating system
-	 * 
-	 * @param null $_SERVER['HTTP_USER_AGENT'] the server's current information
+	 *
+	 * This method tests the $_SERVER vars for an HTTP_USER_AGENT entry
+	 * Through a series of if statements, preg_match, and regex patterns,
+	 * the users OS will be returned. If a OS is unable to be determined
+	 * the string 'other' will be used in it's place.
+	 *
+	 * @param null
 	 * @return string $os_platform the formatted os-type string
 	 */
 	private function getOS()
@@ -360,9 +432,13 @@ class visitorTracking
 	}
 
 	/**
-	 * Get the date bits, used for search/filtering
-	 * 
-	 * @param string $i the requested gmdate character
+	 * Get the date
+	 *
+	 * This method accepts a PHP gmdate() value. It is Identical to the date()
+	 * function except that the time returned is Greenwich Mean Time (GMT).
+	 * This is used to prevent timezone errors and inconsistencies.
+	 *
+	 * @param string $i the requested gmdate() character
 	 * @return string $date the formatted gmdate date
 	 */
 	private function getDate($i)
@@ -377,10 +453,14 @@ class visitorTracking
 	}
 
 	/**
-	 * Get the referring page, if any is sent
-	 * 
-	 * @param null $_SERVER['HTTP_REFERER'] the server's current information
-	 * @return string $ref the path to the refering page
+	 * Get the referring page
+	 *
+	 * This method tests the $_SERVER vars for an HTTP_REFERER entry.
+	 * If a referer is present, it will be returned. Otherwise, null
+	 * will the the response.
+	 *
+	 * @param null
+	 * @return string|null $ref the path to the refering page
 	 */
 	private function getReferer()
 	{
@@ -398,9 +478,13 @@ class visitorTracking
 
 	/**
 	 * Get the requested page
-	 * 
-	 * @param null $_SERVER['REQUEST_URI'] the server's current information
-	 * @return string $uri the path to the requested page
+	 *
+	 * This method tests the $_SERVER vars for an REQUEST_URI entry.
+	 * If the requested page is recorded by the server, it will be
+	 * retuened. Otherwise, null will be the response.
+	 *
+	 * @param null
+	 * @return string|null $uri the path to the requested page
 	 */
 	private function getRequestURI() {
 
@@ -417,8 +501,12 @@ class visitorTracking
 
 	/**
 	* Return the current visit array
-	* 
-	* @param null 
+	*
+	* This method simply returns the compiled visitor information
+	* in an array. You can use this to capture the current visit data
+	* and display it, or use it for another purpose in your application.
+	*
+	* @param null
 	* @return array $this->thisVisit() the compiled visitor information
 	*/
 	public function getThisVisit()
@@ -430,7 +518,11 @@ class visitorTracking
 
 	/**
 	 * Display the current visit array
-	 * 
+	 *
+	 * This method is identical to the getThisVisit method. The key
+	 * difference is that this method is already wrapped in a print_r
+	 * statement. This is used in the class examples.
+	 *
 	 * @param null
 	 * @return array $this->thisVisit() the formatted and compiled visitor information
 	 */
@@ -442,8 +534,12 @@ class visitorTracking
 	}
 
 	/**
-	 * Query database, paginate results, and display the visitors table
-	 * 
+	 * Display Visitors
+	 *
+	 * This method queries the database for all entries in the visitors table,
+	 * it then paginates the results, and outputs a unstyled HTML table. This
+	 * method is used in the class examples.
+	 *
 	 * @param null
 	 * @return array $this->displayVisitors() the html output from the database
 	 */
