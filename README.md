@@ -17,7 +17,7 @@
 1. Instance the class in your code.
 
 Working Demo: http://tyrexi.us/visitorTracking
-
+Documentation: http://tyrexi.us/visitorTrackingDocumentation
 
 ## EXAMPLE INITIALIZATION:
 ```php
