@@ -1,29 +1,8 @@
 <?php
 /**
- * Define the database
- *
- * Use this file to define your database settings.
- * depending on your setup, these values may already
- * be set elsewhere in your application.
- *
+ * define the database
  */
-
- /**
-  * Enter your MYSQL server IP address, or URI
-  */
-  define( 'DB_HOST', 'localhost' );
-
-  /**
-   * Enter the database username where the visitors table is located.
-   */
-  define( 'DB_USER', 'root' );
-
-  /**
-   * Enter the password for the username.
-   */
-  define( 'DB_PASS', '' );
-
-  /**
-   * Enter the name of the database where the visitors table is located. 
-   */
-  define( 'DB_NAME', '' );
+define( 'DB_HOST', 'localhost' ); // set database host
+define( 'DB_USER', 'root' ); // set database user
+define( 'DB_PASS', '' ); // set database password
+define( 'DB_NAME', '' ); // set database name
