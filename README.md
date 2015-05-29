@@ -53,7 +53,7 @@ CONCERNING THE MERCHANTABILITY OF THIS SOFTWARE OR ITS FITNESS FOR ANY PARTICULA
 ## Contributing
 * Create a Fork of the main branch.
 * Clone the repository `$ git clone http://github.com/yourusername/visitorTracking`
-* Add a connection to the repository.`$ git remote add mmbp2011 http://github.com/theshka/visitorTracking`
+* Add a connection to the repository.`$ git remote add origin http://github.com/theshka/visitorTracking`
 * Make changes to files.
 * `git add` and `git commit` those changes
 * `git push` them back to github. These will go to your version of the repository.
