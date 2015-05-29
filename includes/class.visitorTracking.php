@@ -1,31 +1,31 @@
 <?php
 /**
-* A simple PHP class to gather visitor information, and store it in a database using MYSQLi
-*
-* visitorTracking
-*
-* LICENSE: THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-* EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-* OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-* IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
-* FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
-* CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-* WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-*
-* @category   HTML,PHP5,Databases,Geography
-* @author     Tyler Heshka <tyler@heshka.com>
-* @see        http://keybase.io/theshka
-* @license    http://opensource.org/licenses/MIT
-* @version    1.20.00
-* @link       http://tyrexi.us/visitorTracking
+ * A simple PHP class to gather visitor information, and store it in a database using MYSQLi
+ *
+ * visitorTracking
+ *
+ * LICENSE: THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
+ * FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+ * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ * @category   HTML,PHP5,Databases,Geography
+ * @author     Tyler Heshka <tyler@heshka.com>
+ * @see        http://keybase.io/theshka
+ * @license    http://opensource.org/licenses/MIT
+ * @version    1.20.00
+ * @link       http://tyrexi.us/visitorTracking
 */
 
 /**
-* The visitorTracking class
-*
-* This PHP class gathers detailed visitor information,
-* and stores the visit in a database using MYSQLi.
-*/
+ * The visitorTracking class
+ *
+ * This PHP class gathers detailed visitor information,
+ * and stores the visit in a database using MYSQLi.
+ */
 class visitorTracking
 {
 	/**
@@ -38,15 +38,15 @@ class visitorTracking
 	 */
 	private $link = null;
 
-	/**
-     * The constructor method
-     *
-     * This method calls the db_connect method, which constructs
-	 * and initializes the conection to the database. Once established,
-	 * the track method is called. This method gathers the data to insert.
-	 *
-     * @access public
-     */
+   /**
+    * The constructor method
+    *
+    * This method calls the db_connect method, which constructs
+    * and initializes the conection to the database. Once established,
+    * the track method is called. This method gathers the data to insert.
+    * 
+    * @access public
+    */
 	private function __construct()
 	{
 
@@ -58,15 +58,15 @@ class visitorTracking
 
 	}
 
-	/**
-     * The destructor method
-     *
-     * This method tests for a connection to the database,
-	 * if the connection is active, this method will close
-	 * the connection to the MYSQLi database.
-	 *
-     * @access public
-     */
+   /**
+    * The destructor method
+    *
+    * This method tests for a connection to the database,
+    * if the connection is active, this method will close
+    * the connection to the MYSQLi database.
+    * 
+    * @access public
+    */
 	private function __destruct()
 	{
 
@@ -79,17 +79,17 @@ class visitorTracking
 
 	}
 
-	/**
-     * Connect to the databse
-     *
-	 * This method sets the character encoding for the databse,
-	 * then trys to connect to the databse using MYSQLi. The
-	 * constants are defined in a seperate file and included at runtime.
-	 * If the method fails to connect with the database, the script dies,
-	 * and a unable to connect error is shown to the user.
-	 *
-     * @access private
-     */
+   /**
+    * Connect to the databse
+    *
+    * This method sets the character encoding for the databse,
+    * then trys to connect to the databse using MYSQLi. The
+    * constants are defined in a seperate file and included at runtime.
+    * If the method fails to connect with the database, the script dies,
+    * and a unable to connect error is shown to the user.
+    *
+    * @access private
+    */
 	private function db_connect()
 	{
 
