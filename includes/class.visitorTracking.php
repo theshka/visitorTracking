@@ -1,31 +1,31 @@
 <?php
 /**
- * A simple PHP class to gather visitor information, and store it in a database using MYSQLi
- *
- * visitorTracking
- *
- * LICENSE: THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
- * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
- * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
- * FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
- * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- * @category   HTML,PHP5,Databases,Geography
- * @author     Tyler Heshka <tyler@heshka.com>
- * @see        http://keybase.io/theshka
- * @license    http://opensource.org/licenses/MIT
- * @version    1.20.00
- * @link       http://tyrexi.us/visitorTracking
- */
+* A simple PHP class to gather visitor information, and store it in a database using MYSQLi
+*
+* visitorTracking
+*
+* LICENSE: THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+* EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+* OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+* IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
+* FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+* CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+* WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*
+* @category   HTML,PHP5,Databases,Geography
+* @author     Tyler Heshka <tyler@heshka.com>
+* @see        http://keybase.io/theshka
+* @license    http://opensource.org/licenses/MIT
+* @version    1.20.00
+* @link       http://tyrexi.us/visitorTracking
+*/
 
 /**
- * The visitorTracking class
- *
- * This PHP class gathers detailed visitor information,
- * and stores the visit in a database using MYSQLi.
- */
+* The visitorTracking class
+*
+* This PHP class gathers detailed visitor information,
+* and stores the visit in a database using MYSQLi.
+*/
 class visitorTracking
 {
 	/**

@@ -3,7 +3,6 @@
     <parser>
         <target>data/output</target>
     </parser>
-
     <transformer>
         <target>data/output</target>
     </transformer>
