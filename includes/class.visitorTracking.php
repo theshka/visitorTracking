@@ -159,6 +159,9 @@ class visitorTracking
 
 	/**
 	 * Get visitor IP address
+	 * 
+	 * @param boolean $getHostByAddr the IP address with hostname
+	 * @return string $ip the formatted IP address
 	 */
 	private function getIP($getHostByAddr=FALSE)
 	{
@@ -188,6 +191,9 @@ class visitorTracking
 
 	/**
 	 * Geo-locate visitor IP address
+	 * 
+	 * @param string $ip the IPv4 address to lookup on netip.de
+	 * @return array geolocation data: country, state, town
 	 */
 	private function geoCheckIP($ip)
 	{
@@ -230,6 +236,9 @@ class visitorTracking
 
 	/**
 	 * Get country flag
+	 * 
+	 * @param string $countryCode the two character country code from geoCheckIP
+	 * @return string $flag the finished img tag containing country flag
 	 */
 	private function getFlag($countryCode)
 	{
@@ -242,6 +251,9 @@ class visitorTracking
 
 	/**
 	 * Get the visitor browser-type
+	 * 
+	 * @param null / $_SERVER['HTTP_USER_AGENT'] the server's current information
+	 * @return string $browser_agent the formatted browser-type string
 	 */
 	private function getBrowserType ()
 	{
@@ -300,6 +312,9 @@ class visitorTracking
 
 	/**
 	 * Get the visitor operating system
+	 * 
+	 * @param null / $_SERVER['HTTP_USER_AGENT'] the server's current information
+	 * @return string $os_platform the formatted os-type string
 	 */
 	private function getOS()
 	{
@@ -345,6 +360,9 @@ class visitorTracking
 
 	/**
 	 * Get the date bits, used for search/filtering
+	 * 
+	 * @param string $i the requested gmdate character
+	 * @return string $date the formatted gmdate date
 	 */
 	private function getDate($i)
 	{
@@ -359,6 +377,9 @@ class visitorTracking
 
 	/**
 	 * Get the referring page, if any is sent
+	 * 
+	 * @param null / $_SERVER['HTTP_REFERER'] the server's current information
+	 * @return string $ref the path to the refering page
 	 */
 	private function getReferer()
 	{
@@ -376,6 +397,9 @@ class visitorTracking
 
 	/**
 	 * Get the requested page
+	 * 
+	 * @param null / $_SERVER['REQUEST_URI'] the server's current information
+	 * @return string $uri the path to the requested page
 	 */
 	private function getRequestURI() {
 
@@ -392,6 +416,9 @@ class visitorTracking
 
 	/**
 	* Return the current visit array
+	* 
+	* @param null 
+	* @return array $this->thisVisit() the compiled visitor information
 	*/
 	public function getThisVisit()
 	{
@@ -402,6 +429,9 @@ class visitorTracking
 
 	/**
 	 * Display the current visit array
+	 * 
+	 * @param null
+	 * @return array $this->thisVisit() the formatted and compiled visitor information
 	 */
 	public function displayThisVisit()
 	{
@@ -411,7 +441,10 @@ class visitorTracking
 	}
 
 	/**
-	 * Display the visitors table
+	 * Query database, paginate results, and display the visitors table
+	 * 
+	 * @param null
+	 * @return output $this->displayVisitors() the html output from the database
 	 */
 	public function displayVisitors()
 	{
