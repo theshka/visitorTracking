@@ -44,10 +44,10 @@ class visitorTracking
     * This method calls the db_connect method, which constructs
     * and initializes the conection to the database. Once established,
     * the track method is called. This method gathers the data to insert.
-    * 
+    *
     * @access public
     */
-	private function __construct()
+	public function __construct()
 	{
 
 		//Call the db_connect method
@@ -64,8 +64,8 @@ class visitorTracking
     * This method tests for a connection to the database,
     * if the connection is active, this method will close
     * the connection to the MYSQLi database.
-    * 
-    * @access public
+    *
+    * @access private
     */
 	private function __destruct()
 	{
