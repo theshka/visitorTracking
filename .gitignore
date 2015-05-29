@@ -1,3 +1,4 @@
 .git
+includes/db.php
 phpDocumentor
 phpDocumentor.phar
