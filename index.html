@@ -10,7 +10,7 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <title>Visitortracking by theshka</title>
+    <title>VisitorTracking by theshka</title>
   </head>
 
   <body>
@@ -18,7 +18,7 @@
       <div class="inner">
 
         <header>
-          <h1>Visitortracking</h1>
+          <h1>VisitorTracking</h1>
           <h2>A simple PHP class to gather visitor information, and store it in a database using MYSQLi</h2>
         </header>
 
@@ -37,9 +37,84 @@
 <p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here <a href="https://guides.github.com/features/mastering-markdown/">using GitHub Flavored Markdown</a>, select a template crafted by a designer, and publish. After your page is generated, you can check out the new <code>gh-pages</code> branch locally. If you’re using GitHub Desktop, simply sync your repository and you’ll see the new branch.</p>
 
 <h3>
-<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<a id="designer-templa-visitortracking" class="anchor" href="#designer-templa-visitortracking" aria-hidden="true"><span class="octicon octicon-link"></span></a>Designer Templa# visitorTracking</h3>
 
-<p>We’ve crafted some handsome templates for you to use. Go ahead and click 'Continue to layouts' to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved.</p>
+<h2>
+<a id="a-simple-php-class-to-gather-visitor-information-and-store-it-in-a-database-using-mysqli" class="anchor" href="#a-simple-php-class-to-gather-visitor-information-and-store-it-in-a-database-using-mysqli" aria-hidden="true"><span class="octicon octicon-link"></span></a>A simple PHP class to gather visitor information, and store it in a database using MYSQLi</h2>
+
+<h3>
+<a id="what-makes-this-script-special" class="anchor" href="#what-makes-this-script-special" aria-hidden="true"><span class="octicon octicon-link"></span></a>What makes this script special?</h3>
+
+<ul>
+<li>It's more modern and complete than others I have seen around on Google/HotScripts. (SQLi, oop(ish?), etc...)</li>
+<li>No bells or whistles, fully customiziable.</li>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>INSTALLATION</h2>
+
+<ol>
+<li><p>Upload the files to your server.</p></li>
+<li><p>Edit the database configuration ( <code>/includes/db.php</code> )</p></li>
+<li><p>Create the <code>visitors</code> table in your database. (<code>/_installation/visitors.sql</code> )</p></li>
+<li><p>Instance the class in your code.</p></li>
+</ol>
+
+<p>Working Demo: <a href="http://tyrexi.us/visitorTracking">http://tyrexi.us/visitorTracking</a></p>
+
+<p>Documentation: <a href="http://tyrexi.us/visitorTrackingDocumentation">http://tyrexi.us/visitorTrackingDocumentation</a></p>
+
+<h2>
+<a id="example-initialization" class="anchor" href="#example-initialization" aria-hidden="true"><span class="octicon octicon-link"></span></a>EXAMPLE INITIALIZATION:</h2>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-c">//define database</span></span>
+<span class="pl-s1"><span class="pl-c1">define</span>( <span class="pl-s"><span class="pl-pds">'</span>DB_HOST<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>localhost<span class="pl-pds">'</span></span> );           <span class="pl-c">// set database host</span></span>
+<span class="pl-s1"><span class="pl-c1">define</span>( <span class="pl-s"><span class="pl-pds">'</span>DB_USER<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>root<span class="pl-pds">'</span></span> );                <span class="pl-c">// set database user</span></span>
+<span class="pl-s1"><span class="pl-c1">define</span>( <span class="pl-s"><span class="pl-pds">'</span>DB_PASS<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span> );                    <span class="pl-c">// set database password</span></span>
+<span class="pl-s1"><span class="pl-c1">define</span>( <span class="pl-s"><span class="pl-pds">'</span>DB_NAME<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>yourdatabasename<span class="pl-pds">'</span></span> );    <span class="pl-c">// set database name</span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">//include the class</span></span>
+<span class="pl-s1"><span class="pl-k">include</span>( <span class="pl-s"><span class="pl-pds">'</span>class.visitorTracking.php<span class="pl-pds">'</span></span> );</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">//instance the class</span></span>
+<span class="pl-s1"><span class="pl-smi">$visitors</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">visitorTracking</span>();</span></pre></div>
+
+<p>The constructor method automatically calls the tracking method <code>$visitors-&gt;track();</code> which inserts the collected data.</p>
+
+<p>You print the array containting the current visit by echoing <code>$visitors-&gt;displayThisVisit();</code></p>
+
+<p>You can output a table containing all the pagniated data from the database by echoing <code>$visitors-&gt;displayVisitors();</code></p>
+
+<p>Alternatively, you can just grab the table data from your database <code>SELECT * FROM visitors ORDER BY date DESC</code> and format it according to your specifications.</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>LICENSE</h2>
+
+<p>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+<a href="http://creativecommons.org/licenses/by-sa/4.0/">http://creativecommons.org/licenses/by-sa/4.0/</a></p>
+
+<p>THIS SOFTWARE IS BEING PROVIDED "AS IS", WITHOUT ANY EXPRESS OR IMPLIED WARRANTY.<br>
+IN PARTICULAR, THE AUTHOR DOES NOT MAKE ANY REPRESENTATION OR WARRANTY OF ANY KIND
+CONCERNING THE MERCHANTABILITY OF THIS SOFTWARE OR ITS FITNESS FOR ANY PARTICULAR PURPOSE.</p>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<ul>
+<li>Create a Fork of the main branch.</li>
+<li>Clone the repository <code>$ git clone http://github.com/yourusername/visitorTracking</code>
+</li>
+<li>Add a connection to the repository.<code>$ git remote add origin http://github.com/theshka/visitorTracking</code>
+</li>
+<li>Make changes to files.</li>
+<li>
+<code>git add</code> and <code>git commit</code> those changes</li>
+<li>
+<code>git push</code> them back to github. These will go to your version of the repository.</li>
+<li>Submit a pull-request
+tes
+We’ve crafted some handsome templates for you to use. Go ahead and click 'Continue to layouts' to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved.</li>
+</ul>
 
 <h3>
 <a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating pages manually</h3>
@@ -58,7 +133,7 @@
         </section>
 
         <footer>
-          Visitortracking is maintained by <a href="https://github.com/theshka">theshka</a><br>
+          VisitorTracking is maintained by <a href="https://github.com/theshka">theshka</a><br>
           This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
         </footer>
 
