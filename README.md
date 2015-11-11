@@ -1,26 +1,37 @@
-# visitorTracking
-## A simple PHP class to gather visitor information, and store it in a database using MYSQLi
+visitorTracking
+======
 
+[![GitHub License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/theshka/visitorTracking/blob/master/LICENSE)
+[![Software Version](https://img.shields.io/badge/version-1.2.1-red.svg)](https://github.com/theshka/visitorTracking/releases/latest)
+[![Github Downloads](https://img.shields.io/github/downloads/theshka/visitorTracking/latest/total.svg)](https://github.com/theshka/visitorTracking/releases)
 
-### What makes this script special?
-- It's more modern and complete than others I have seen around on Google/HotScripts. (SQLi, oop(ish?), etc...)
-- No bells or whistles, fully customiziable.
+---
 
+**visitorTracking** is a simple PHP class to gather visitor information, and store it in a database using MYSQLi. It's more modern and complete than others I have seen around on Google/HotScripts. (SQLi, oop(ish?), etc...) No bells or whistles, fully customizable.
 
-## INSTALLATION
+## Download
+* [Dev-Master](https://github.com/theshka/visitorTracking/archive/master.zip)
+* [Version 1.2.1](https://github.com/theshka/visitorTracking/archive/v.1.2.1.zip)
+
+### Old Versions
+* [Version 0.0.1](https://github.com/theshka/visitorTracking/archive/v0.1.zip)
+
+## Documentation
+[http://tyrexi.us/visitorTrackingDocumentation](http://tyrexi.us/visitorTrackingDocumentation)
+
+## Demo
+[http://tyrexi.us/visitorTracking](http://tyrexi.us/visitorTracking)
+
+## Install
 1. Upload the files to your server.
 
-1. Edit the database configuration ( `/includes/db.php` )
+1. Edit the database configuration ( `src/_installation/db.php` )
 
-1. Create the `visitors` table in your database. (`/_installation/visitors.sql` )
+1. Create the `visitors` table in your database. (`src/_installation/visitors.sql` )
 
 1. Instance the class in your code.
 
-Working Demo: http://tyrexi.us/visitorTracking
-
-Documentation: http://tyrexi.us/visitorTrackingDocumentation
-
-## EXAMPLE INITIALIZATION:
+## Usage
 ```php
 //define database
 define( 'DB_HOST', 'localhost' );           // set database host
@@ -29,33 +40,31 @@ define( 'DB_PASS', '' );                    // set database password
 define( 'DB_NAME', 'yourdatabasename' );    // set database name
 
 //include the class
-include( 'class.visitorTracking.php' );
+include( 'src/class.visitorTracking.php' );
 
 //instance the class
 $visitors = new visitorTracking();
 ```
 The constructor method automatically calls the tracking method `$visitors->track();` which inserts the collected data.
 
-You print the array containting the current visit by echoing `$visitors->displayThisVisit();`
+You print the array containing the current visit by echoing `$visitors->displayThisVisit();`
 
-You can output a table containing all the pagniated data from the database by echoing `$visitors->displayVisitors();`
+You can output a table containing all the paginated data from the database by echoing `$visitors->displayVisitors();`
 
 Alternatively, you can just grab the table data from your database `SELECT * FROM visitors ORDER BY date DESC` and format it according to your specifications.
 
-## LICENSE
-This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
-http://creativecommons.org/licenses/by-sa/4.0/
+## License
+This project is licensed under the [MIT LICENSE](https://github.com/theshka/visitorTracking/blob/master/LICENSE)
 
-THIS SOFTWARE IS BEING PROVIDED "AS IS", WITHOUT ANY EXPRESS OR IMPLIED WARRANTY.  
-IN PARTICULAR, THE AUTHOR DOES NOT MAKE ANY REPRESENTATION OR WARRANTY OF ANY KIND
-CONCERNING THE MERCHANTABILITY OF THIS SOFTWARE OR ITS FITNESS FOR ANY PARTICULAR PURPOSE.
+## Contributors
 
+### Contributors on GitHub
+* [Contributors](https://github.com/theshka/visitorTracking/graphs/contributors)
 
 ## Contributing
-* Create a Fork of the main branch.
-* Clone the repository `$ git clone http://github.com/yourusername/visitorTracking`
-* Add a connection to the repository.`$ git remote add origin http://github.com/theshka/visitorTracking`
-* Make changes to files.
-* `git add` and `git commit` those changes
-* `git push` them back to github. These will go to your version of the repository.
-* Submit a pull-request
+If you would like to help make this software better, please follow our guidelines found in [CONTRIBUTING.md](https://github.com/theshka/visitorTracking/blob/master/CONTRIBUTING.md)
+
+## Contact
+* Homepage: http://heshka.com
+* E-mail: tyler@heshka.com
+* KeyBase: https://keybase.io/theshka
