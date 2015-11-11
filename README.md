@@ -1,7 +1,7 @@
 visitorTracking
 ======
 
-[![GitHub License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/theshka/visitorTracking/blob/master/LICENSE)
+[![GitHub License](https://img.shields.io/badge/license-MIT%20License-blue.svg)](https://github.com/theshka/visitorTracking/blob/master/LICENSE)
 [![Software Version](https://img.shields.io/badge/version-1.2.1-red.svg)](https://github.com/theshka/visitorTracking/releases/latest)
 [![Github Downloads](https://img.shields.io/github/downloads/theshka/visitorTracking/latest/total.svg)](https://github.com/theshka/visitorTracking/releases)
 
