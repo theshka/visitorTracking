@@ -2,12 +2,12 @@
 	/**
 	 * include database settings
 	 */
-	require_once( 'includes/db.php' );
+	require_once( 'src/_installation/db.php' );
 
 	/**
 	 * include the class
 	 */
-	require_once( 'includes/class.visitorTracking.php' );
+	require_once( 'src/class.visitorTracking.php' );
 
 	/**
 	 * instance the class
@@ -22,7 +22,7 @@
 
 	<body>
 		<div style="float:left;"><a href="http://tyrexi.us/visitorTrackingDocumentation/" target="_blank">Documentation</a></div>
-		<div style="float:right;"><a href="examples/example1.php">Example 1</a></div>
+		<div style="float:right;"><a href="examples/map-example.php">Map Example</a></div>
 
 		<br>
 
