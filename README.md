@@ -1,9 +1,8 @@
 visitorTracking
 ======
 
-[![GitHub License](https://img.shields.io/badge/license-MIT%20License-blue.svg)](https://github.com/theshka/visitorTracking/blob/master/LICENSE)
-[![Software Version](https://img.shields.io/badge/version-1.2.1-red.svg)](https://github.com/theshka/visitorTracking/releases/latest)
-[![Github Downloads](https://img.shields.io/github/downloads/theshka/visitorTracking/latest/total.svg)](https://github.com/theshka/visitorTracking/releases)
+[![GitHub License](https://img.shields.io/github/license/theshka/visitorTracking.svg)](https://github.com/theshka/visitorTracking/blob/master/LICENSE.md)
+[![GitHub Release](https://img.shields.io/github/release/theshka/visitorTracking.svg)](https://github.com/theshka/visitorTracking/releases/latest)
 
 ---
 
