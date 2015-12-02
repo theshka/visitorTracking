@@ -1,10 +1,5 @@
-visitorTracking
+visitorTracking [![GitHub License](https://img.shields.io/github/license/theshka/visitorTracking.svg)](https://github.com/theshka/visitorTracking/blob/master/LICENSE.md) [![GitHub Release](https://img.shields.io/github/release/theshka/visitorTracking.svg)](https://github.com/theshka/visitorTracking/releases/latest)
 ======
-
-[![GitHub License](https://img.shields.io/github/license/theshka/visitorTracking.svg)](https://github.com/theshka/visitorTracking/blob/master/LICENSE.md)
-[![GitHub Release](https://img.shields.io/github/release/theshka/visitorTracking.svg)](https://github.com/theshka/visitorTracking/releases/latest)
-
----
 
 **visitorTracking** is a simple PHP class to gather visitor information, and store it in a database using MYSQLi. It's more modern and complete than others I have seen around on Google/HotScripts. (SQLi, oop(ish?), etc...) No bells or whistles, fully customizable.
 
