@@ -65,9 +65,9 @@ class visitorTracking
     * if the connection is active, this method will close
     * the connection to the MYSQLi database.
     *
-    * @access private
+    * @access public
     */
-	private function __destruct()
+	public function __destruct()
 	{
 
 		//Test for database connection
