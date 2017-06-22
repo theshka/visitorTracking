@@ -135,11 +135,11 @@ class visitorTracking
 		$visitor_flag		= $this->getFlag($visitor_ccode);
 		$visitor_browser	= $this->getBrowserType();
 		$visitor_OS			= $this->getOS();
-		$visitor_date		= $this->getDate("Y-m-d h:i:sA");
+		$visitor_date		= $this->getDate("Y-m-d H:i:s");
 		$visitor_day		= $this->getDate("d");
 		$visitor_month		= $this->getDate("m");
 		$visitor_year		= $this->getDate("Y");
-		$visitor_hour		= $this->getDate("h");
+		$visitor_hour		= $this->getDate("H");
 		$visitor_minute		= $this->getDate("i");
 		$visitor_seconds	= $this->getDate("s");
 		$visitor_referer	= $this->getReferer();
@@ -187,7 +187,6 @@ class visitorTracking
         	$sql .= $fields .' VALUES '. $values;
 
         	$query = $this->link->query( $sql );
-
         	if( $this->link->error )
         	{
        			//return false;
@@ -395,6 +394,7 @@ class visitorTracking
 		$user_agent	=	$_SERVER['HTTP_USER_AGENT'];
 		$os_platform	=	"Unknown OS Platform";
 		$os_array	=	array(
+						'/windows nt 10.0/i'	=>  'Windows 10',
 						'/windows nt 6.3/i'     =>  'Windows 8.1',
 						'/windows nt 6.2/i'     =>  'Windows 8',
 						'/windows nt 6.1/i'     =>  'Windows 7',
